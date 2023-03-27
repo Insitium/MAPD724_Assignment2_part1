@@ -8,36 +8,20 @@
 import SwiftUI
 
 struct TitleRow: View {
-    
-        var imageUrl = URL(string: "https://twitter.com/sarthak3181997/photo")
-        var name = "Sarthak Vashistha"
         
         var body: some View {
             HStack(spacing: 20) {
-                AsyncImage(url: imageUrl) { image in
-                    image.resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 50, height: 50)
-                        .cornerRadius(50)
-                } placeholder: {
-                    ProgressView()
-                }
-                
+                Image(systemName: "person.circle.fill")
+                    .padding(10)
+                    .cornerRadius(50)
+                    .frame(width: 32.0, height: 32.0)
+
+                                
                 VStack(alignment: .leading) {
-                    Text(name)
+                    Text("Sarthak Vashistha")
                         .font(.title).bold()
-                    
-                    Text("Online")
-                        .font(.caption)
-                        .foregroundColor(.gray)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
-                
-                Image(systemName: "phone.fill")
-                    .foregroundColor(.gray)
-                    .padding(10)
-                    .background(.white)
-                    .cornerRadius(50)
             }
             .padding()
         }
@@ -47,5 +31,5 @@ struct TitleRow: View {
 struct TitleRow_Previews: PreviewProvider {
     static var previews: some View {
         TitleRow()
-            .background(Color("Peach"))    }
+               }
 }

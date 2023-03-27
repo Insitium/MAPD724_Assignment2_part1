@@ -11,7 +11,7 @@ import SwiftUI
 struct MAPD724_Assignment2_part1App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LoginScreenUI()
         }
     }
 }

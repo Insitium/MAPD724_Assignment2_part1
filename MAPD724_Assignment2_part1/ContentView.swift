@@ -8,32 +8,35 @@
 import SwiftUI
 
 struct ContentView: View {
-    var messageArray = ["Hello Sarthak","I am enjoying working on it","I make good jokes and previous one was one of them","I am not just hilarious, I also have a habit of laughting at wrong moments"]
+    var messageArray = ["Hello I am Sarthak","This is the chat View","It is a simple chat view","My teammates are Krisuv, Manmeen, Hafiz and Amreek."]
+    
+    var messageArrayTwo = ["Hello I am Krisuv","This is the chat View","It is a simple chat view","My teammates are Sarthak, Manmeen, Hafiz and Amreek."]
     var body: some View {
-        VStack{
-            VStack {
-                TitleRow()
-                
+        NavigationView{
+            VStack{
+                VStack {
+                    TitleRow()
+        
                     ScrollView {
                         ForEach(messageArray, id: \.self) { text in
-                            MessageBubble(message: Message(id:
-                                                            "1947",text:text, received: true, timestamp: Date()))
+                            MessageBubble(message: MessageModel(id: "200", messageContent: text, messageRecivedStatus: true, dateRecivied: Date()
+                                                               ))
+                        }
+                            ForEach(messageArrayTwo, id: \.self) { text in
+                                MessageBubble(message: MessageModel(id: "200", messageContent: text, messageRecivedStatus: false, dateRecivied: Date()
+                                                                ))
                         }
                     }
                     .padding(.top, 10)
                     .background(.white)
-                    .cornerRadius(30, corners: [.topLeft, .topRight])
+//                    .cornerRadius(30, corners: [.topLeft, .topRight])
                 }
-            .background(Color("Peach"))
-            MessageField()
-        }
-            
+                .background(Color.white)
+                MessageField()
+            }
+        }.navigationBarBackButtonHidden(true)
         }
     }
-    
-    
-    
-    
     
     
     struct ContentView_Previews: PreviewProvider {
