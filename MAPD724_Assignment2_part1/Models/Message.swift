@@ -6,9 +6,9 @@
 //
 
 import Foundation
-struct Message: Identifiable, Codable {
+struct MessageModel: Identifiable, Codable {
     var id: String
-    var text: String
-    var received: Bool
-    var timestamp: Date
+    var messageContent: String
+    var messageRecivedStatus: Bool
+    var dateRecivied: Date
 }

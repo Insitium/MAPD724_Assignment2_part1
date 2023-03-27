@@ -9,16 +9,18 @@ import SwiftUI
 
 struct MessageField: View {
     @State private var message = ""
+    @State private var text = "Enter Message"
+
     var body: some View {
         HStack {
-            CustomTextField(placeholder: Text("Enter your message here"), text: $message)
+            TextField("", text: $text)
             Button {
                 message = ""
             } label: {
                 Image(systemName: "paperplane.fill")
                     .foregroundColor(.white)
                     .padding(10)
-                    .background(Color("Peach"))
+                    .background(Color.green)
                     .cornerRadius(50)
             }
         }
@@ -36,21 +38,3 @@ struct MessageField: View {
             MessageField()
         }
     }
-    struct CustomTextField: View {
-        var placeholder: Text
-        @Binding var text: String
-        var editingChanged: (Bool)->() = { _ in }
-        var commit: ()->() = { }
-        
-        var body: some View {
-            ZStack(alignment: .leading) {
-                // If text is empty, show the placeholder on top of the TextField
-                if text.isEmpty {
-                    placeholder
-                        .opacity(0.5)
-                }
-                TextField("", text: $text, onEditingChanged: editingChanged, onCommit: commit)
-            }
-        }
-    }
-
