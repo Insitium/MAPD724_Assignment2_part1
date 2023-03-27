@@ -9,11 +9,11 @@ import SwiftUI
 
 struct MessageField: View {
     @State private var message = ""
-    @State private var text = "Enter Message"
+    @State private var text = ""
 
     var body: some View {
         HStack {
-            TextField("", text: $text)
+            TextField("Enter Message", text: $text)
             Button {
                 message = ""
             } label: {
@@ -26,7 +26,7 @@ struct MessageField: View {
         }
         .padding(.horizontal)
         .padding(.vertical, 10)
-        .background(Color("Gray"))
+        .background(Color.gray).opacity(0.5)
         .cornerRadius(50)
         .padding()
         
