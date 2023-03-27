@@ -12,50 +12,52 @@ struct LoginScreenUI: View {
        @State private var password = ""
     var body: some View {
         NavigationView{
-            VStack{
-                Text("Login").font(.largeTitle).bold().padding()
-                
-                TextField("Username", text: $username)
-                    .padding()
-                    .frame(width: 350, height: 70)
-                    .background(Color.black.opacity(0.02))
-                    .cornerRadius(10)
+            ScrollView{
+                VStack{
+                    Text("Login").font(.largeTitle).bold().padding()
                     
-                
-                SecureField("Password", text: $password)
-                    .padding()
-                    .frame(width: 350, height: 70)
-                    .background(Color.black.opacity(0.02))
-                    .cornerRadius(10).padding()
-                
-                NavigationLink(destination: ContentView()) {
-                    Button("Login") {}
-                    .foregroundColor(.white)
-                    .frame(width: 350, height: 50)
-                    .background(Color.green)
-                    .cornerRadius(16)
-                }
-                
-                HStack {
-                    VStack{
-                        Divider().overlay(.pink)
-                    }.padding()
-                    Text("OR").foregroundColor(Color.blue)
-                    VStack{
-                        Divider().overlay(.pink)
-                    }.padding()
-                }
-                
-                NavigationLink(destination: RegisterViewUI()) {
-                    Button("Register") {}
-                    .foregroundColor(.white)
-                    .frame(width: 350, height: 50)
-                    .background(Color.blue)
-                    .cornerRadius(16)
-                }
-                
-               
+                    TextField("Username", text: $username)
+                        .padding()
+                        .frame(width: 350, height: 70)
+                        .background(Color.black.opacity(0.02))
+                        .cornerRadius(10)
+                        
+                    
+                    SecureField("Password", text: $password)
+                        .padding()
+                        .frame(width: 350, height: 70)
+                        .background(Color.black.opacity(0.02))
+                        .cornerRadius(10).padding()
+                    
+                    NavigationLink(destination: ContentView()) {
+                        Button("Login") {}
+                        .foregroundColor(.white)
+                        .frame(width: 350, height: 50)
+                        .background(Color.green)
+                        .cornerRadius(16)
+                    }
+                    
+                    HStack {
+                        VStack{
+                            Divider().overlay(.pink)
+                        }.padding()
+                        Text("OR").foregroundColor(Color.blue)
+                        VStack{
+                            Divider().overlay(.pink)
+                        }.padding()
+                    }
+                    
+                    NavigationLink(destination: RegisterViewUI()) {
+                        Button("Register") {}
+                        .foregroundColor(.white)
+                        .frame(width: 350, height: 50)
+                        .background(Color.blue)
+                        .cornerRadius(16)
+                    }
+                    
+                   
 
+                }
             }
         }.navigationBarBackButtonHidden(true)
     }
