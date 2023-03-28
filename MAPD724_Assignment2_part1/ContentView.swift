@@ -1,16 +1,24 @@
 //
 //  ContentView.swift
 //  MAPD724_Assignment2_part1
+//  Frameworks App - GeoChat App - Created Simple UI
 //
-//  Created by Sarthak Vashistha on 2023-03-26.
-//
+//  Created on 2023-03-26.
+/*
+    Amrik Singh(301296257)
+    Hafiz Shaikh(301282061)
+    Krisuv Bohara(301274636)
+    Manmeen Kaur(301259638)
+    Sarthak Vashistha(301245284)
+*/
+//  Version 1.0.0
 
 import SwiftUI
 
 struct ContentView: View {
-    var messageArray = ["Hello I am Sarthak","This is the chat View","It is a simple chat view","My teammates are Krisuv, Manmeen, Hafiz and Amreek."]
+    var messageArray = ["Hello I am Sarthak","This is the chat View","It is a simple chat view","My teammates are Krisuv, Manmeen, Hafiz and Amrik."]
     
-    var messageArrayTwo = ["Hello I am Krisuv","This is the chat View","It is a simple chat view","My teammates are Sarthak, Manmeen, Hafiz and Amreek."]
+    var messageArrayTwo = ["Hello I am Krisuv","This is the chat View","It is a simple chat view","My teammates are Sarthak, Manmeen, Hafiz and Amrik."]
     var body: some View {
         NavigationView{
             VStack{
