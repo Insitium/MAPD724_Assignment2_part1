@@ -6,16 +6,27 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct LoginScreenUI: View {
+    
     @State private var username = ""
-       @State private var password = ""
+    @State private var password = ""
+    @State var authStatusMessage = ""
+    @State private var showHomePage = false
+
+    init() {
+        if(FirebaseApp.app() == nil){
+            FirebaseApp.configure()
+        }
+    }
+    
     var body: some View {
-        NavigationView{
+        NavigationStack{
             VStack{
                 Text("Login").font(.largeTitle).bold().padding()
                 
-                TextField("Username", text: $username)
+                TextField("Email", text: $username)
                     .padding()
                     .frame(width: 350, height: 70)
                     .background(Color.black.opacity(0.02))
@@ -28,13 +39,17 @@ struct LoginScreenUI: View {
                     .background(Color.black.opacity(0.02))
                     .cornerRadius(10).padding()
                 
-                NavigationLink(destination: ContentView()) {
-                    Button("Login") {}
+                    Button("Login") {
+                        handleLogin()
+                    }
                     .foregroundColor(.white)
                     .frame(width: 350, height: 50)
                     .background(Color.green)
                     .cornerRadius(16)
-                }
+                    .navigationDestination(
+                        isPresented: $showHomePage) {
+                            UserListView()
+                        }
                 
                 HStack {
                     VStack{
@@ -47,19 +62,41 @@ struct LoginScreenUI: View {
                 }
                 
                 NavigationLink(destination: RegisterViewUI()) {
-                    Button("Register") {}
+                    Button("Register") {
+                        
+                    }
                     .foregroundColor(.white)
                     .frame(width: 350, height: 50)
                     .background(Color.blue)
                     .cornerRadius(16)
                 }
                 
-               
-
+                Text(self.authStatusMessage).foregroundColor(.red)
             }
+            
+
         }.navigationBarBackButtonHidden(true)
+        
+    }
+    
+    private func handleLogin(){
+        if(username == "" && password == ""){
+            showHomePage = false
+            authStatusMessage = "xx"
+        }else{
+            Auth.auth().signIn(withEmail: username, password: password) { (result, error) in
+                if error != nil {
+                    self.authStatusMessage = error?.localizedDescription ?? ""
+                    showHomePage = false
+                } else {
+                    showHomePage = true
+                    self.authStatusMessage = result?.user.uid ?? ""
+                }
+            }
+        }
     }
 }
+
 
 
 struct LoginScreenUI_Previews: PreviewProvider {

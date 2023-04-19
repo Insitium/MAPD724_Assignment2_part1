@@ -6,9 +6,15 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct MAPD724_Assignment2_part1App: App {
+    
+    init() {
+      FirebaseApp.configure()
+    }
+    
     var body: some Scene {
         WindowGroup {
             LoginScreenUI()

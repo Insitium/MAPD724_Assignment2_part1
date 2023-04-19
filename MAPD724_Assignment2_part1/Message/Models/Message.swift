@@ -7,8 +7,10 @@
 
 import Foundation
 struct MessageModel: Identifiable, Codable {
-    var id: String
+    var id: String 
     var messageContent: String
     var messageRecivedStatus: Bool
     var dateRecivied: Date
 }
+
+

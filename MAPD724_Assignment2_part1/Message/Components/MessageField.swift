@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct MessageField: View {
+    @ObservedObject var messageManager = MessageManager()
+    @Binding var model: UserModel?
+
     @State private var message = ""
     @State private var text = ""
 
@@ -15,7 +19,10 @@ struct MessageField: View {
         HStack {
             TextField("Enter Message", text: $text)
             Button {
-                message = ""
+                message = text
+                var id = Auth.auth().currentUser?.uid
+                var toId = model?.id
+                messageManager.sendMessage(id: id!, reciverId: toId!, content: message)
             } label: {
                 Image(systemName: "paperplane.fill")
                     .foregroundColor(.white)
@@ -34,7 +41,8 @@ struct MessageField: View {
 }
     
     struct MessageField_Previews: PreviewProvider {
+        @State static var mods: UserModel?
         static var previews: some View {
-            MessageField()
+            MessageField(model: $mods)
         }
     }
