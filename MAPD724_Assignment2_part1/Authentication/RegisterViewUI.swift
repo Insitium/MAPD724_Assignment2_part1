@@ -17,12 +17,16 @@ struct RegisterViewUI: View {
     @State private var username = ""
     @State private var password = ""
     @State private var email = ""
+    @State private var location = ""
     @State private var registerStatusMessage = ""
     @State private var showHomePage = false
+    @State private var coordinates = CLLocationCoordinate2D(latitude: 37.333747, longitude: -122.011448)
     @State private var showSheet = false
+    @ObservedObject var lm = LocationManager()
 
 
     var body: some View {
+
         NavigationView{
             VStack{
                 Text("Register").font(.largeTitle).bold().padding()
@@ -47,14 +51,21 @@ struct RegisterViewUI: View {
                 
                 HStack {
                     VStack{
-                        TextField("Location", text: $username)
+                        TextField("Location", text: $location)
                             .padding()
                             .frame(width: 250, height: 70)
                             .background(Color.black.opacity(0.02))
                             .cornerRadius(10)                    }
                     VStack{
                         Button("Get") {
-                            self.showSheet.toggle()
+                            lm.address.reverseGeocodeLocation(CLLocation.init(latitude: lm.locationManager.location?.coordinate.latitude ?? 0.0, longitude:lm.locationManager.location?.coordinate.longitude ?? 0.0)) { (places, error) in
+                                if error == nil{
+                                    if let place = places{
+                                        location = (place[0].name ?? "")
+                                        
+                                    }
+                                }
+                            }
                         }
                         .foregroundColor(.white)
                         .frame(width: 65, height: 50)
@@ -62,18 +73,19 @@ struct RegisterViewUI: View {
                         .cornerRadius(8)
                     }.padding()
                 }
-//                .sheet(isPresented: $showSheet) {
-//                    NavigationView {
-//                        LocationPicker(
-//                            instructions: "Tap somewhere to select your coordinates", coordinates: $coordinates).navigationTitle("Location Picker")
-//                            .navigationBarTitleDisplayMode(.inline)
-//                            .navigationBarItems(leading: Button(action: {
-//                                self.showSheet.toggle()
-//                            }, label: {
-//                                Text("Close").foregroundColor(.red)
-//                            }))
-//                    }
-//                }
+                .sheet(isPresented: $showSheet) {
+                    NavigationView {
+                        LocationPicker(
+                            instructions: "Tap somewhere to select your coordinates", coordinates: $coordinates).navigationTitle("Location Picker")
+                            .navigationBarTitleDisplayMode(.inline)
+                            .navigationBarItems(leading: Button(action: {
+                                print(coordinates)
+                                self.showSheet.toggle()
+                            }, label: {
+                                Text("Close").foregroundColor(.red)
+                            }))
+                    }
+                }
                 
 //                NavigationLink() {
                     Button("Register") {

@@ -1,4 +1,5 @@
 import Foundation
+import Firebase
 import FirebaseFirestore
 
 class UserViewModel: ObservableObject {
@@ -12,7 +13,7 @@ class UserViewModel: ObservableObject {
     private var db = Firestore.firestore()
 
      func fetchData() {
-       db.collection("users").addSnapshotListener { (querySnapshot, error) in
+         db.collection("users").whereField("uid", isNotEqualTo: Auth.auth().currentUser!.uid).addSnapshotListener { (querySnapshot, error) in
          guard let documents = querySnapshot?.documents else {
            print("No documents")
            return

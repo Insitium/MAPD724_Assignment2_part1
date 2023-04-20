@@ -18,9 +18,18 @@ class MessageManager: ObservableObject {
     
     func sendMessage(id : String, reciverId : String,content: String ){
         let doc = db.collection("messages").document(id).collection(reciverId).document()
+        let recipent = db.collection("messages").document(reciverId).collection(id).document()
         
         let message = ["fromId" : id, "toId" : reciverId, "content" : content, "date" : Timestamp()] as [String : Any]
+        
+        
         doc.setData(message){
+            error in
+            if error != nil{
+                print("error")
+            }
+        }
+        recipent.setData(message){
             error in
             if error != nil{
                 print("error")

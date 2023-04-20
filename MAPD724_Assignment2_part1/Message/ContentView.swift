@@ -14,11 +14,8 @@ struct ContentView: View {
     @Binding var model: UserModel?
     @State private var showTime = false
     @ObservedObject var viewModel = MessageManager()
-    
-    
-    var messageArray = ["Hello I am Sarthak","This is the chat View","It is a simple chat view","My teammates are Krisuv, Manmeen, Hafiz and Amreek."]
-    
-    var messageArrayTwo = ["Hello I am Krisuv","This is the chat View","It is a simple chat view","My teammates are Sarthak, Manmeen, Hafiz and Amreek."]
+    @State var gotoPage4 = false
+
     
     
     var body: some View {
@@ -27,14 +24,17 @@ struct ContentView: View {
                 Spacer().navigationBarBackButtonHidden(true).toolbar(content: {
                     ToolbarItem(placement: .navigationBarLeading, content: {
                         Button(action: {
-                            self.presentationMode.wrappedValue.dismiss()
-                        }) {
+                            gotoPage4 = true
+                        }){
                             HStack {
                                 Image(systemName: "house") // set image here
                                     .aspectRatio(contentMode: .fit)
-                                    .foregroundColor(.white)
+                                    .foregroundColor(.blue)
                                 Text("Go back")
-                            }
+                            }.navigationDestination(
+                                isPresented: $gotoPage4) {
+                                    UserListView()
+                                }
                         }
                     })
                 })
@@ -52,17 +52,17 @@ struct ContentView: View {
                                                                   .foregroundColor(.white)
                                                           }
                                                           .padding()
-                                                          .background(Color.blue)
+                                                          .background(Color.green)
                                                           .cornerRadius(8)
                                                       }
                                                   } else {
                                                       HStack {
                                                           HStack {
                                                               Text(text.content)
-                                                                  .foregroundColor(.black)
+                                                                  .foregroundColor(.white)
                                                           }
                                                           .padding()
-                                                          .background(Color.white)
+                                                          .background(Color.blue)
                                                           .cornerRadius(8)
                                                           Spacer()
                                                       }

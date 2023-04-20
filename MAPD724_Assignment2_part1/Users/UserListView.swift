@@ -45,6 +45,7 @@ struct UserListView: View {
                         model: $user
                     )
                 }
+                .navigationBarBackButtonHidden(true)
               .navigationBarTitle("All App Users")
               .onAppear() {
                 self.viewModel.fetchData()

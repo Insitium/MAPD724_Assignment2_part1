@@ -20,9 +20,10 @@ struct MessageField: View {
             TextField("Enter Message", text: $text)
             Button {
                 message = text
-                var id = Auth.auth().currentUser?.uid
-                var toId = model?.id
-                messageManager.sendMessage(id: id!, reciverId: toId!, content: message)
+                let fromId = Auth.auth().currentUser?.uid
+                let toId = model?.id
+             
+                messageManager.sendMessage(id: fromId!, reciverId: toId!, content: message)
             } label: {
                 Image(systemName: "paperplane.fill")
                     .foregroundColor(.white)

@@ -27,6 +27,7 @@
 		6AB1B98229EF9BD800C0517F /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB1B98129EF9BD800C0517F /* MessageManager.swift */; };
 		6AB1B98429EF9CBE00C0517F /* FetchedMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB1B98329EF9CBE00C0517F /* FetchedMessageModel.swift */; };
 		6AB1B98629EFACDB00C0517F /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6AB1B98529EFACDB00C0517F /* FirebaseFirestoreSwift */; };
+		6AF99F9D29F0CC490033FD24 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF99F9C29F0CC490033FD24 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		6AB1B97E29EF807F00C0517F /* UserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
 		6AB1B98129EF9BD800C0517F /* MessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
 		6AB1B98329EF9CBE00C0517F /* FetchedMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedMessageModel.swift; sourceTree = "<group>"; };
+		6AF99F9C29F0CC490033FD24 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 			children = (
 				6A3900C329D137A20022C511 /* LoginScreenUI.swift */,
 				6A3900C529D137DF0022C511 /* RegisterViewUI.swift */,
+				6AF99F9C29F0CC490033FD24 /* LocationManager.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				6AB1B97F29EF807F00C0517F /* UserListView.swift in Sources */,
 				6A3900C429D137A20022C511 /* LoginScreenUI.swift in Sources */,
 				2D29F44B29D121E700DE37DB /* MAPD724_Assignment2_part1App.swift in Sources */,
+				6AF99F9D29F0CC490033FD24 /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +390,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MAPD724-Assignment2-part1-Info.plist";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Need to Access Location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -415,6 +420,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MAPD724-Assignment2-part1-Info.plist";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Need to Access Location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
